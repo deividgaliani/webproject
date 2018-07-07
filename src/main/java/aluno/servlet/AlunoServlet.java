@@ -14,6 +14,21 @@ public class AlunoServlet extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("Metodo Get chamado");
+		//System.out.println("Metodo Get chamado");
+		resp.setCharacterEncoding("UTF-8");
+		resp.getWriter().print("Chamou pelo método GET!");
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		//System.out.println("Metodo Post chamado");
+		resp.setCharacterEncoding("UTF-8");
+		resp.getWriter().print("Chamou pelo método POST!");
+	}
+	
+	@Override
+	protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		resp.setCharacterEncoding("UTF-8");
+		resp.getWriter().print("Método DELETE chamado");
 	}
 }
