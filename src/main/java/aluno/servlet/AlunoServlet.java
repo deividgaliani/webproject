@@ -1,6 +1,8 @@
 package aluno.servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,18 +15,25 @@ import aluno.domain.Aluno;
 @WebServlet(urlPatterns= "/alunoController")
 public class AlunoServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
+	
+	List<Aluno> alunos = new ArrayList<>();
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		//System.out.println("Metodo Get chamado");
-		resp.setCharacterEncoding("UTF-8");
-		resp.getWriter().print("Chamou pelo método GET!");
+		/*resp.setCharacterEncoding("UTF-8");
+		for (Aluno aluno : alunos) {
+			resp.getWriter().println("Nome: " + aluno.getNome() + ", Idade: " + aluno.getIdade());			
+		}*/
+		req.getRequestDispatcher("alunos.jsp");
+		
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		/*System.out.println("Metodo Post chamado");
-		resp.setCharacterEncoding("UTF-8");*/
+		if(req.getParameter("nome") == null || req.getParameter("idade") == null) {
+			resp.getWriter().println("Informe os dados no formulário");
+			return;
+		}
 		
 		
 		String nome = req.getParameter("nome");
@@ -32,7 +41,8 @@ public class AlunoServlet extends HttpServlet{
 		Aluno aln = new Aluno();
 		aln.setNome(nome);
 		aln.setIdade(Integer.parseInt(idade));
-		resp.getWriter().print("Chamou pelo método POST... Nome : " + aln.getNome() + ", Idade: " + aln.getIdade());
+		alunos.add(aln);
+		resp.getWriter().print("Aluno Adicionado... Nome : " + aln.getNome() + ", Idade: " + aln.getIdade());
 	}
 	
 	@Override
