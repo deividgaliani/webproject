@@ -11,17 +11,17 @@
 	    <h2>Cadastro de Aluno</h2>	    
 	    
 	    <!-- Formulario de cadastro -->
-		<form class="form-horizontal">
+		<form class="form-horizontal" method="post" action="alunoController">
 		  <div class="control-group">
 		    <label class="control-label" for="inputNome">Nome completo</label>
 		    <div class="controls">
-		      <input type="text" id="inputNome" placeholder="Nome">
+		      <input type="text" id="inputNome" placeholder="Nome" value="" name="nome">
 		    </div>
 		  </div>
 		  <div class="control-group">
 		    <label class="control-label" for="inputIdade">Idade</label>
 		    <div class="controls">
-		      <input type="number" id="inputIdade" placeholder="Idade">
+		      <input type="number" id="inputIdade" placeholder="Idade" value="" name="idade">
 		    </div>
 		  </div>
 		  <div class="control-group">
