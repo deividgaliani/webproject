@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,12 +21,7 @@ public class AlunoServlet extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		/*resp.setCharacterEncoding("UTF-8");
-		for (Aluno aluno : alunos) {
-			resp.getWriter().println("Nome: " + aluno.getNome() + ", Idade: " + aluno.getIdade());			
-		}*/
-		req.getRequestDispatcher("alunos.jsp");
-		
+		RequestDispatcher dispatcher = req.getRequestDispatcher("alunos.jsp");		
 	}
 	
 	@Override
